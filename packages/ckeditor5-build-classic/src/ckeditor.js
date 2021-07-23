@@ -30,6 +30,8 @@ import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
+import Font from '@ckeditor/ckeditor5-font/src/font';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -58,7 +60,9 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	Font,
+	Alignment
 ];
 
 // Editor configuration.
@@ -73,8 +77,12 @@ ClassicEditor.defaultConfig = {
 			'bulletedList',
 			'numberedList',
 			'|',
-			'outdent',
-			'indent',
+			'fontFamily',
+			'fontSize',
+			'fontColor',
+			'fontBackgroundColor',
+			'|',
+			'alignment',
 			'|',
 			'uploadImage',
 			'blockQuote',
@@ -100,6 +108,43 @@ ClassicEditor.defaultConfig = {
 			'tableRow',
 			'mergeTableCells'
 		]
+	},
+	fontSize: {
+		options: [
+			8,
+			10,
+			12,
+			14,
+			'default',
+			18,
+			20,
+			22
+		]
+	},
+	fontFamily: {
+		options: [
+			'default',
+ 			'Arial, Helvetica, sans-serif',
+ 			'Courier New, Courier, monospace',
+ 			'Georgia, serif',
+ 			'Lucida Sans Unicode, Lucida Grande, sans-serif',
+ 			'Tahoma, Geneva, sans-serif',
+ 			'Times New Roman, Times, serif',
+ 			'Trebuchet MS, Helvetica, sans-serif',
+ 			'Verdana, Geneva, sans-serif'
+		],
+		supportAllValues: true
+	},
+	fontColor: {
+		// Display 6 columns in the color grid.
+		columns: 6,
+
+		// And 12 document colors (2 rows of them).
+		documentColors: 48
+	},
+	fontBackgroundColor: {
+		// Remove the "Document colors" section.
+		documentColors: 48
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
